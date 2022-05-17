@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+This Project can be used to learn react basic concepts like <br />
+<b>
+(1) How to use bootstrap in react. <br />
+(2) How to make Api call in react using axios. <br />
+(3) How to get access to previous props. <br />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+=========================================================================================
+</b>
 
-## Available Scripts
+<b>How to use bootstrap in react</b> <br />
+Step 1 : "npm install react-bootstrap bootstrap" Run this command in terminal to install bootstrap. <br />
+Step 2: import 'bootstrap/dist/css/bootstrap.min.css'; place this import inside App.js file. <br />
+Step 3: Import components before using it. <br />
+import Button from 'react-bootstrap/Button'; <br />
+or less ideally <br />
+import { Button } from 'react-bootstrap'; <br /><br />
 
-In the project directory, you can run:
+<b>How make Api call using axios.</b><br />
+Step 1: inside constructor define your state as <br />
+this.state = { <br />
+    isLoaded: false, <br />
+    error: null, <br />
+    ary : [] <br />
+} <br />
 
-### `npm start`
+Step 2: Inside componentDidMount Make your Api call. <br />
+axios.get('samplejson/customerlist.json').then((data)=>{  <br />
+    this.setState({error: null, isLoaded : true, ary : data.data}); //don't forgot to do data.data because API call return a array in of all information like http headers, data etc so for accessing data we have to do data.data. <br />
+}).catch((error)=>{ <br />
+    this.setState({error: error}); <br />
+});  <br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Step 3: Inside your render method check for some cases, <br />
+if(error !== null){ <br />
+    return <div>Error : {this.state.error}</div> <br />
+}else if(isLoaded === false){ <br />
+    return <div>Loading.... Please wait.</div> <br />
+}else{ <br />
+    return( <br />
+        //Api Content <br />
+    ); <br />
+} <br />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+<b>How to access previous props</b> <br />
+Inside componentDidUpdate we can access previous props. <br />
+componentDidUpdate(prevProps){<br />
+//When user select any other customers <br />
+if(this.props.selectedId !== prevProps.selectedId){ <br />
+    this.getDataFromApi(); <br />
+} <br />
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

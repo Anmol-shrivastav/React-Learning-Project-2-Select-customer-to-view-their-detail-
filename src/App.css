@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 22vmin;
   pointer-events: none;
 }
 
@@ -15,19 +15,16 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  height: fit-content;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.App-link {
-  color: #61dafb;
+.header-title{
+  font-size: xx-large;
+  font-weight: bolder;
 }
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,4 +32,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* ======================= custom css======================================= */
+.container-fluid{
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
